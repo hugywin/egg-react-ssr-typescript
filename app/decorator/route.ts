@@ -1,6 +1,3 @@
-import { CharService } from '../core/char';
-
-
 export const routelist: RouteInfo[] = [];
 
 /**
@@ -75,4 +72,26 @@ export interface RouteInfo {
      * @memberof RouteConfig
      */
     routeUrl: string;
+}
+
+
+class CharService {
+
+    // 下划线转换驼峰
+    public static toHump(word: string) {
+        // Support: IE9-11+
+        return word.replace(/-([a-z])/g, (_all, letter) => {
+            return letter.toUpperCase();
+        });
+    }
+
+
+    // 驼峰转换下划线
+    public static toLine(name): string {
+        return name.replace(/([A-Z])/g, "-$1").toLowerCase();
+    }
+
+    public static toSmallHump(word: string) {
+        return word.substring(0, 1).toLowerCase() + word.substring(1, word.length);
+    }
 }
