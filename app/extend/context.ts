@@ -6,6 +6,8 @@ const { renderToNodeStream } = require('react-dom/server')
 @Extend
 class ContextExtend {
 
+    public serverData = null;
+
     async renderToStream() {
         const self: Context = this as any;
         self.type = 'text/html'
@@ -16,9 +18,11 @@ class ContextExtend {
             delete require.cache[path.resolve(__dirname, '../../dist/Page.server.js')]
         }
         let serverStream = require('../../dist/Page.server')
-        const serverRes = await serverStream.default(this)
+        const serverRes = await serverStream.default.$serverRender(self);
         const stream = renderToNodeStream(serverRes)
         self.body = stream
     }
+
+
 }
 export default Reflect.getOwnMetadata("core-enum", ContextExtend.prototype) as ContextExtend;
