@@ -6,7 +6,7 @@ const { renderToNodeStream } = require('react-dom/server')
 @Extend
 class ContextExtend {
 
-    public serverData = null;
+    public serverData: any = {};
 
     async renderToStream() {
         const self: Context = this as any;

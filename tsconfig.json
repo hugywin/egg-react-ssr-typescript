@@ -1,20 +1,24 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
+    "baseUrl": ".",
+    "target": "esnext",
+    "module": "esnext",
     "strict": true,
-    "lib": ["es6", "dom"],
+    "lib": ["dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "charset": "utf8",
-    "allowJs": false,
+    "allowJs": true,
     "pretty": true,
-    "jsx": "react",
-    "moduleResolution": "node",
+    "jsx": "preserve",
     "noEmitOnError": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "esModuleInterop": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "strictPropertyInitialization": false,
@@ -25,14 +29,24 @@
     "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": false,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@/*": [
+        "web/*"
+      ]
+    }
   },
   "exclude": [
     "app/public",
     "app/views",
-    "node_modules*"
+    "node_modules*",
+    "build*",
+    "dist*",
+    "old*",
   ]
 }
