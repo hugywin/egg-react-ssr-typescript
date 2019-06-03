@@ -3,9 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "esnext",
-    "module": "esnext",
+    "module": "commonjs",
     "strict": true,
-    "lib": ["dom",
+    "lib": [
+      "dom",
       "dom.iterable",
       "esnext"
     ],
