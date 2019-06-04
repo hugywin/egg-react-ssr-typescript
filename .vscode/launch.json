@@ -14,7 +14,7 @@
         "console": "integratedTerminal",
         "protocol": "inspector",
         "restart": true,
-        "port": 9229,
+        "port": 19229,
         "autoAttachChildProcesses": true
     }]
 }

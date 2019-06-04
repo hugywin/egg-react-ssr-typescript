@@ -12,8 +12,6 @@ export default class App extends React.Component<IAppProps> {
         super(props);
     }
 
-    public a: any;
-
     render(): JSX.Element {
         return (
             <div>

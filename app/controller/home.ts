@@ -9,7 +9,10 @@ export default class HomeController extends Controller {
   public async index() {
     const { ctx } = this;
     try {
-      await ctx.renderToStream()
+      ctx.type = 'text/html'
+      ctx.status = 200
+      const stream = await await ctx.renderToStream("Page");
+      ctx.body = stream;
     } catch (error) {
       ctx.logger.error(`page controller error ${error}`)
     }
