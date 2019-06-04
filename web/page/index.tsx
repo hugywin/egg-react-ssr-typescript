@@ -1,5 +1,6 @@
 import React from 'react';
 import { MultipleRender } from '../decorator/MultipleRender';
+import style from './index.module.scss';
 
 interface IAppProps {
 
@@ -14,7 +15,7 @@ export default class App extends React.Component<IAppProps> {
 
     render(): JSX.Element {
         return (
-            <div>
+            <div className={style.homepage}>
                 <div>测试首页</div>
             </div>
         );
