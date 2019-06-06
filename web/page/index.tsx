@@ -13,6 +13,10 @@ export default class App extends React.Component<IAppProps> {
         super(props);
     }
 
+    componentDidMount(): void {
+        console.log(123);
+    }
+
     render(): JSX.Element {
         return (
             <div className={style.homepage}>
@@ -21,4 +25,10 @@ export default class App extends React.Component<IAppProps> {
         );
     }
 }
+
+
+
+
+
+
 
