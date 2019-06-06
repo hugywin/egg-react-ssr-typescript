@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route, StaticRouter } from 'react-router-dom'
 import { Context } from 'egg';
+import { Layout } from '@/layout';
 
 export function MultipleRender() {
     return function (target) {
@@ -12,9 +13,11 @@ export function MultipleRender() {
         const clientRender = () => {
             ReactDOM.hydrate(
                 <BrowserRouter>
-                    <Switch>
-                        <Route path="/" render={(props) => React.createElement(target, { ...props })} />
-                    </Switch>
+                    <Layout>
+                        <Switch>
+                            <Route path="/" render={(props) => React.createElement(target, { ...props })} />
+                        </Switch>
+                    </Layout>
                 </BrowserRouter>,
                 document.getElementById('app') as HTMLElement
             );
@@ -32,9 +35,11 @@ export function MultipleRender() {
 
             return (
                 <StaticRouter location={ctx.req.url} context={ctx.serverData}>
-                    <Switch>
-                        <Route path="/" render={(_props) => React.createElement(target, { ...ctx.serverData })} />
-                    </Switch>
+                    <Layout>
+                        <Switch>
+                            <Route path="/" render={(_props) => React.createElement(target, { ...ctx.serverData })} />
+                        </Switch>
+                    </Layout>
                 </StaticRouter>
             );
         }

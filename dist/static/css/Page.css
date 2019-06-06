@@ -1,3 +1,49 @@
-.homepage_1jyue {
-  margin: 0; }
+.normal {
+  font-family: Georgia, sans-serif;
+  text-align: center; }
+
+body {
+  background-color: #f2f3f5; }
+
+.title_3D7bQ {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  background-color: darkslateblue;
+  color: #fff; }
+
+.author_24Zab {
+  position: absolute;
+  font-size: 15px;
+  bottom: 10px;
+  right: 100px; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+a {
+  color: #fff;
+  text-decoration: none; }
+
+ul {
+  list-style: none; }
+
+.list_1DvMr {
+  background-color: #fff;
+  width: 1000px;
+  margin: 100px auto; }
+  .list_1DvMr li {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px 30px 20px 80px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    line-height: 20px; }
+    .list_1DvMr li .toDetail_174Mj a {
+      font-size: 14px;
+      color: #888; }
 
