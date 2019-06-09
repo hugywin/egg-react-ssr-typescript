@@ -4,8 +4,9 @@ import React from 'react';
 import styles from './index.module.scss';
 import { Context } from 'egg';
 import { Route } from '@/decorator/Route';
-import '@/page/news/index'
 import { GetInitialProps } from '@/decorator/GetInitialProps';
+import '@/page/news/index'
+
 
 
 interface IPageProps {
