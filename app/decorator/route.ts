@@ -34,7 +34,15 @@ export function Router(route?: string) {
             approutelist.push(routeItem);
         }
 
-        Reflect.defineMetadata("configRoute", configRoute, target.constructor.prototype, methodName);
+        /** 支持复用路由 如果有多个路由 则元数据 为 设置路由函数数组 */
+        if (Reflect.getMetadata("configRoute", target.constructor.prototype, methodName)) {
+            const configRouteList = [Reflect.getMetadata("configRoute", target.constructor.prototype, methodName)];
+            configRouteList.push(configRoute);
+            Reflect.defineMetadata("configRoute", configRouteList, target.constructor.prototype, methodName);
+        }
+        else {
+            Reflect.defineMetadata("configRoute", configRoute, target.constructor.prototype, methodName);
+        }
     }
 }
 

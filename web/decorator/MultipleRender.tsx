@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route, StaticRouter } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, StaticRouter, matchPath } from 'react-router-dom'
 import { Context } from 'egg';
 import { Layout } from '@/layout';
 import { clientroutelist } from './Route';
@@ -52,7 +52,7 @@ export function MultipleRender() {
 
             let component: any;
             if (routelist.length > 0) {
-                component = routelist.findIndex(p => p.routeUrl.indexOf(ctx.path) > -1) > -1 ? routelist.find(p => p.routeUrl.indexOf(ctx.path) > -1)!.component : target
+                component = routelist.findIndex(p => matchPath(ctx.path, p.routeUrl)) > -1 ? routelist.find(p => matchPath(ctx.path, p.routeUrl))!.component : target
             }
             else {
                 component = target;
