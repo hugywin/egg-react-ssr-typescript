@@ -9,7 +9,7 @@ export default (app: Application) => {
   const list = new Array<RouteInfo>().concat(routelist);
   console.log(list);
   list.forEach(p => {
-    if (p.origin !== "home") {
+    if (p.origin !== "") {
       router.all(p.routeUrl, Reflect.get(Reflect.get(Reflect.get(controller, p.origin), p.controller), p.action));
     }
     else {

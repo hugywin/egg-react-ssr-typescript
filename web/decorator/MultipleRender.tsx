@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route, StaticRouter } from 'react-router-dom'
 import { Context } from 'egg';
 import { Layout } from '@/layout';
+import { clientroutelist } from './Route';
 
 export function MultipleRender() {
-    return function (target) {
 
+    let routelist = clientroutelist;
+
+    return function (target) {
+        console.log('startup');
         /**
          * 客户端渲染方法
          */
@@ -14,9 +18,21 @@ export function MultipleRender() {
             ReactDOM.hydrate(
                 <BrowserRouter>
                     <Layout>
-                        <Switch>
-                            <Route path="/" render={(props) => React.createElement(target, { ...props })} />
-                        </Switch>
+                        {
+                            routelist.length > 0 ? (
+                                <Switch>
+                                    {
+                                        routelist.map((item, index) => {
+                                            let baseprops = (window as any).__INITIAL_DATA__;
+                                            return (
+                                                <Route key={index} path={item.routeUrl} render={(props) => React.createElement(item.component, Object.assign(baseprops, props))} />
+                                            )
+                                        })
+                                    }
+                                </Switch>
+                            )
+                                : React.createElement(target)
+                        }
                     </Layout>
                 </BrowserRouter>,
                 document.getElementById('app') as HTMLElement
@@ -31,14 +47,26 @@ export function MultipleRender() {
          * 服务端渲染方法
          * @param ctx 
          */
-        const serverRender = (ctx: Context) => {
+        const serverRender = async (ctx: Context) => {
+
+
+            let component: any;
+            if (routelist.length > 0) {
+                component = routelist.findIndex(p => p.routeUrl.indexOf(ctx.path) > -1) > -1 ? routelist.find(p => p.routeUrl.indexOf(ctx.path) > -1)!.component : target
+            }
+            else {
+                component = target;
+            }
+
+            const serverData = component!.getInitialProps ? await component.getInitialProps(ctx) : {}
+            ctx.serverData = serverData;
 
             return (
                 <StaticRouter location={ctx.req.url} context={ctx.serverData}>
                     <Layout>
-                        <Switch>
-                            <Route path="/" render={(_props) => React.createElement(target, { ...ctx.serverData })} />
-                        </Switch>
+                        {
+                            React.createElement(component, serverData)
+                        }
                     </Layout>
                 </StaticRouter>
             );

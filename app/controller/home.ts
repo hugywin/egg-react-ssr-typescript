@@ -2,10 +2,11 @@ import { Controller } from 'egg';
 import { origin } from '../decorator/origin';
 import { Router } from '../decorator/route';
 
-@origin('home')
+@origin()
 export default class HomeController extends Controller {
 
   @Router()
+  @Router('/news/:id')
   public async index() {
     const { ctx } = this;
     try {

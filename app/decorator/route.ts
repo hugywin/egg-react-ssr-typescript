@@ -27,7 +27,7 @@ export function Router(route?: string) {
                 routeItem = {
                     controller: controller,
                     action: methodName,
-                    routeUrl: `${origin != "home" ? `/${origin}` : ``}${controller != "home" ? `/${controller}` : ``}/${CharService.toLine(methodName)}`,
+                    routeUrl: `${origin !== '' ? `/${origin}` : ``}${controller != "home" ? `/${controller}` : ``}/${CharService.toLine(methodName)}`,
                     origin: origin
                 };
             }

@@ -26,6 +26,7 @@
     "variable-name": false,
     "no-var-requires": false,
     "object-literal-shorthand": false,
-    "only-arrow-functions": [false]
+    "only-arrow-functions": [false],
+    "no-unused-variable": [false]
   }
 }

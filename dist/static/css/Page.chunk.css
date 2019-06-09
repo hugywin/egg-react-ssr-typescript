@@ -25,7 +25,7 @@ body {
   padding: 0; }
 
 a {
-  color: #fff;
+  color: #000;
   text-decoration: none; }
 
 ul {
@@ -46,6 +46,7 @@ ul {
     .list_1DvMr li .toDetail_174Mj a {
       font-size: 14px;
       color: #888; }
+
 
 
 /*# sourceMappingURL=Page.chunk.css.map*/

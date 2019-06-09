@@ -41,5 +41,60 @@ declare module 'egg' {
          * @memberof EggAppConfig
          */
         serverJs(chunkName): string;
+
+        /**
+         * 服务端手动配置的路由
+         *
+         * @type {ServerRoute[]}
+         * @memberof EggAppConfig
+         */
+        routes: ServerRoute[];
+    }
+
+    /**
+     * 服务端路由
+     *
+     * @interface ServerRoute
+     */
+    interface ServerRoute {
+        /**
+         * 服务端渲染解析的路由
+         *
+         * @type {string}
+         * @memberof ServerRoute
+         */
+        path: string;
+
+        /**
+         *
+         *
+         * @type {boolean}
+         * @memberof ServerRoute
+         */
+        exact?: boolean;
+
+        /**
+         * 服务端渲染的React组件
+         *
+         * @returns {React.Component}
+         * @memberof ServerRoute
+         */
+        Component(): React.Component;
+
+        /**
+         * 服务端控制器
+         *
+         * @type {string}
+         * @memberof ServerRoute
+         */
+        controller: string;
+
+        /**
+         * 服务端的action方法
+         *
+         * @type {string}
+         * @memberof ServerRoute
+         */
+        handler: string;
     }
 }
