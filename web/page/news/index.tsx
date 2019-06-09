@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { Context } from 'egg';
 import { Route } from '@/decorator/Route';
 import './index.module.scss';
+import { GetInitialProps } from '@/decorator/GetInitialProps';
 
 interface INewsProps {
     newsDetail: string;
@@ -10,7 +11,8 @@ interface INewsProps {
 
 @withRouter
 @Route('/news/:id')
-export default class News extends React.PureComponent<INewsProps> {
+@GetInitialProps
+export default class News extends React.Component<INewsProps> {
 
     static async getInitialProps(ctx: Context): Promise<any> {
         const mockData = {
@@ -24,6 +26,10 @@ export default class News extends React.PureComponent<INewsProps> {
         return Promise.resolve({
             newsDetail: mockData[newsId]
         })
+    }
+
+    componentDidMount() {
+        console.log('news');
     }
 
 

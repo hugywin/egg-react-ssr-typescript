@@ -5,6 +5,7 @@ import styles from './index.module.scss';
 import { Context } from 'egg';
 import { Route } from '@/decorator/Route';
 import '@/page/news/index'
+import { GetInitialProps } from '@/decorator/GetInitialProps';
 
 
 interface IPageProps {
@@ -13,6 +14,7 @@ interface IPageProps {
 
 @MultipleRender()
 @Route('/index')
+@GetInitialProps
 export default class Page extends React.Component<IPageProps> {
 
   static async getInitialProps(_ctx: Context): Promise<any> {

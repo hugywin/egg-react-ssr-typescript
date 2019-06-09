@@ -8,7 +8,6 @@ export const clientroutelist: ClientRouteInfo[] = [];
  * @returns {Function}
  */
 export function Route(path: string): Function {
-    console.log('register router');
     let routelist = clientroutelist
     return function (target: any) {
         routelist.push({ routeUrl: path, component: target });
