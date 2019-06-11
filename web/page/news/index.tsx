@@ -1,17 +1,13 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { Context } from 'egg';
 import { Route } from '@/decorator/Route';
 import './index.module.scss';
-import { GetInitialProps } from '@/decorator/GetInitialProps';
 
 interface INewsProps {
     newsDetail: string;
 }
 
-@withRouter
 @Route('/news/:id')
-@GetInitialProps
 export default class News extends React.Component<INewsProps> {
 
     static async getInitialProps(ctx: Context): Promise<any> {

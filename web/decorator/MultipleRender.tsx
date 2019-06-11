@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, StaticRouter, matchPath } from 'react-rou
 import { Context } from 'egg';
 import { Layout } from '@/layout';
 import { clientroutelist } from './Route';
+import { GetinitialProps } from 'ykfe-utils';
 
 export function MultipleRender() {
 
@@ -27,7 +28,7 @@ export function MultipleRender() {
                                             routelist.map((item, index) => {
                                                 return (
                                                     <Route key={index} path={item.routeUrl} render={(props) => {
-                                                        return React.createElement(item.component, props);
+                                                        return React.createElement(GetinitialProps(item.component), props);
                                                     }} />
                                                 )
                                             })
